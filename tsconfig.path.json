@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@home": ["./src/home"],
+            "@forecast_today": ["./src/forecast_today"],
+            "@forecast_5_days": ["./src/forecast_5_days"],
+            "@shared": ["./src/shared"]
+        }
+    }
+}

@@ -1,0 +1,57 @@
+/* import { ITheme } from "./types"; */
+
+import { DefaultTheme } from "styled-components";
+
+export const darkTheme: DefaultTheme = {
+    spacing: {
+        xs: "5px",
+        s: "10px",
+        m: "20px",
+        l: "30px",
+        xl: "35px",
+    },
+    line: {
+        thin: "1px",
+        middle: "3px",
+        thick: "5px",
+    },
+    proportions: {
+        heightS: "25px",
+        heightM: "35px",
+        widthS: "50px",
+        widthM: "90px",
+        widthL: "180px",
+        widthXL: "700px",
+    },
+    typography: {
+        h1: {
+            fontFamily: 'Fascinate',
+            fontSize: '2rem',
+            fontWeight: 400,
+        },
+        h2: {
+            fontSize: '1rem',
+            fontWeight: 400,
+        },
+        small: {
+            fontSize: '0.8rem',
+            fontWeight: 400,
+        },
+        medium: {
+            fontSize: '1rem',
+            fontWeight: 400,
+        },
+        large: {
+            fontSize: '2rem',
+            fontWeight: 500,
+        },
+    },
+    palette: {
+        primaryFontColor: 'rgb(241, 238, 233)',
+        secondaryFontColor: 'rgb(255, 255, 255)',
+        decorativeColor: 'rgb(236, 153, 75)',
+        decorativeColorTransparent: 'rgba(236, 153, 75, 0.2)',
+        primaryBackgroundColor: 'rgb(21, 19, 60)',
+        secondaryBackgroundColor: 'rgba(115, 119, 123, 0.8)',
+    }
+}
