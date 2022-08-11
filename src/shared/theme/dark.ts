@@ -2,7 +2,7 @@
 
 import { DefaultTheme } from "styled-components";
 
-export const darkTheme: DefaultTheme = {
+export const dark: DefaultTheme = {
     spacing: {
         xs: "5px",
         s: "10px",
@@ -16,8 +16,10 @@ export const darkTheme: DefaultTheme = {
         thick: "5px",
     },
     proportions: {
+        heightXS: "15px",
         heightS: "25px",
         heightM: "35px",
+        widthXS: "15px",
         widthS: "50px",
         widthM: "90px",
         widthL: "180px",
@@ -50,8 +52,8 @@ export const darkTheme: DefaultTheme = {
         primaryFontColor: 'rgb(241, 238, 233)',
         secondaryFontColor: 'rgb(255, 255, 255)',
         decorativeColor: 'rgb(236, 153, 75)',
-        decorativeColorTransparent: 'rgba(236, 153, 75, 0.2)',
+        decorativeColorTransparent: 'rgba(236, 153, 75, 0.8)',
         primaryBackgroundColor: 'rgb(21, 19, 60)',
-        secondaryBackgroundColor: 'rgba(115, 119, 123, 0.8)',
+        secondaryBackgroundColor: 'rgba(115, 119, 123, 1)',
     }
 }

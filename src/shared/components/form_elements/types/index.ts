@@ -20,20 +20,24 @@ export interface IButton {
     ariaLabel: string;
     text: string;
     type?: SharedTypes.FontType;
+    onClick?(e: React.MouseEvent): void;
+    dataLineID?: string;
+    dataLineName?: string;
     color?: string;
     width?: string;
 }
 
 export interface ILink extends IButton {
     to: string;
+    
 }
 
 export interface IInput {
     ariaLabel: string;
-    placeholder: string;
+    placeholder?: string;
     inputType?: string;
     value?: string;
-    onChange?(e: any): void;
+    onChange?(e: React.ChangeEvent): void;
     type?: SharedTypes.FontType;
     color?: string;
 }

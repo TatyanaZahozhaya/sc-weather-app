@@ -16,8 +16,10 @@ declare module 'styled-components' {
             thick: string;
         };
         proportions: {
+            heightXS: string;
             heightS: string;
             heightM: string;
+            widthXS: string;
             widthS: string;
             widthM: string;
             widthL: string;

@@ -4,8 +4,9 @@ export interface IForm {
     display?: string;
     gap?: string;
     marginTop?: string;
-    onSubmit?(e: any): void;
+    onSubmit?(e: React.FormEvent): void;
 }
+
 export const Form = styled.form`
     display: flex;
     gap: ${({ theme }) => theme.spacing.s};

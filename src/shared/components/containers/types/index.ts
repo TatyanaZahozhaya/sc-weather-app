@@ -1,5 +1,3 @@
-import { ReactNode } from 'react';
-
 export interface IAppContainer {
     position?: string;
     maxWidth?: string;
@@ -19,15 +17,12 @@ export interface IContainer {
     alignItems?: string;
     backgroundColor?: string;
     borderBottom?: string;
-    children: ReactNode;
 }
 
 export interface IGridContainer extends IContainer {
-    gridTemplateColumns: string;
+    gridTemplateColumns?: string;
 }
 
 export interface IFlexContainer extends IContainer {
-    flexDirection?: string;
-    justifyContent: string;
+    justifyContent?: string;
 }
-

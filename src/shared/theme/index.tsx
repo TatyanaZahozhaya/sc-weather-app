@@ -1,3 +1,3 @@
-export { lightTheme } from './light';
-export { darkTheme } from './dark';
+export { light } from './light';
+export { dark } from './dark';
 export { useStyledTheme } from './hooks';

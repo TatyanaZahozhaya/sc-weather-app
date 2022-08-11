@@ -2,13 +2,13 @@ import { FC, memo } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { Text } from '../text';
-import { SharedTypes } from '@shared';
+import { SharedTypes, SharedComponents } from '@shared';
 import { IFormElement, IButton, IInput, ILink } from './types';
 
 //Button
 export const StyledButton = styled.button<IFormElement>`
-    border: ${({ theme }) => `${theme.palette.decorativeColor} ${theme.line.thin} solid` || '1px solid black'};
+    border: ${({ theme }) =>
+        `${theme.palette.decorativeColor} ${theme.line.thin} solid` || '1px solid black'};
     color: ${({ theme }) => theme.palette.secondaryFontColor};
     border-radius: ${({ theme }) => theme.spacing.s || '10px'};
     background-color: ${({ theme }) => theme.palette.decorativeColorTransparent};
@@ -22,23 +22,34 @@ export const StyledButton = styled.button<IFormElement>`
     outline: ${({ outline = 'none' }) => outline};
     justify-self: ${({ justifySelf = 'center' }) => justifySelf};
 
-
     &:focus-visible {
-        border: ${({ theme }) => `${theme.palette.decorativeColor} ${theme.line.middle} solid` || '3px solid black'};
+        border: ${({ theme }) =>
+            `${theme.palette.decorativeColor} ${theme.line.middle} solid` || '3px solid black'};
     }
+
     &:hover,
     :active {
-        border: ${({ theme }) => `${theme.palette.decorativeColor} ${theme.line.middle} solid` || '3px solid black'};
+        border: ${({ theme }) =>
+            `${theme.palette.decorativeColor} ${theme.line.middle} solid` || '3px solid black'};
     }
 `;
 
 export const Button: FC<IButton> = memo(
-    ({ color = 'black', type = SharedTypes.FontTypes.small, ariaLabel, text }) => {
+    ({
+        color = 'black',
+        type = SharedTypes.FontTypes.small,
+        ariaLabel,
+        text,
+        onClick,
+        dataLineID,
+    }) => {
         return (
             <StyledButton
                 color={color}
-                aria-label={ariaLabel}>
-                <Text
+                aria-label={ariaLabel}
+                onClick={onClick}
+                data-line-id={dataLineID}>
+                <SharedComponents.Text
                     color={color}
                     text={text}
                     type={SharedTypes.FontTypes.small}
@@ -48,9 +59,10 @@ export const Button: FC<IButton> = memo(
     },
 );
 
-//LinkButton
+//Link like Button
 export const StyledLink = styled(Link)`
-    border: ${({ theme }) => `${theme.palette.decorativeColor} ${theme.line.thin} solid` || '1px solid black'};
+    border: ${({ theme }) =>
+        `${theme.palette.decorativeColor} ${theme.line.thin} solid` || '1px solid black'};
     color: ${({ theme }) => theme.palette.secondaryFontColor};
     border-radius: ${({ theme }) => theme.spacing.s || '10px'};
     background-color: ${({ theme }) => theme.palette.decorativeColorTransparent};
@@ -64,24 +76,35 @@ export const StyledLink = styled(Link)`
     outline: ${'none'};
     justify-self: ${'center'};
 
-
     &:focus-visible {
-        border: ${({ theme }) => `${theme.palette.decorativeColor} ${theme.line.middle} solid` || '3px solid black'};
+        border: ${({ theme }) =>
+            `${theme.palette.decorativeColor} ${theme.line.middle} solid` || '3px solid black'};
     }
     &:hover,
     :active {
-        border: ${({ theme }) => `${theme.palette.decorativeColor} ${theme.line.middle} solid` || '3px solid black'};
+        border: ${({ theme }) =>
+            `${theme.palette.decorativeColor} ${theme.line.middle} solid` || '3px solid black'};
     }
 `;
 
 export const LinkButton: FC<ILink> = memo(
-    ({ color = 'black', type = SharedTypes.FontTypes.small, ariaLabel, text, to }) => {
+    ({
+        color = 'black',
+        type = SharedTypes.FontTypes.small,
+        ariaLabel,
+        text,
+        to,
+        dataLineName,
+        onClick,
+    }) => {
         return (
             <StyledLink
                 to={to}
                 color={color}
-                aria-label={ariaLabel}>
-                <Text
+                aria-label={ariaLabel}
+                data-line-name={dataLineName}
+                onClick={onClick}>
+                <SharedComponents.Text
                     color={color}
                     text={text}
                     type={SharedTypes.FontTypes.small}
@@ -93,7 +116,8 @@ export const LinkButton: FC<ILink> = memo(
 
 //Input
 export const StyledInput = styled.input<IFormElement>`
-    border: ${({ theme }) => `${theme.palette.decorativeColor} ${theme.line.thin} solid` || '1px solid black'};
+    border: ${({ theme }) =>
+        `${theme.palette.decorativeColor} ${theme.line.thin} solid` || '1px solid black'};
     color: ${({ theme }) => theme.palette.secondaryFontColor};
     border-radius: ${({ theme }) => theme.spacing.s || '10px'};
     background-color: ${'transparent'};
@@ -117,7 +141,14 @@ export const StyledInput = styled.input<IFormElement>`
 `;
 
 export const Input: FC<IInput> = memo(
-    ({ color = 'black', ariaLabel, inputType = 'text', placeholder, value, onChange }) => {
+    ({
+        color = 'black',
+        ariaLabel,
+        inputType = 'text',
+        placeholder,
+        value,
+        onChange,
+    }) => {
         return (
             <StyledInput
                 color={color}

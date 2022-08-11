@@ -2,12 +2,12 @@ import { SharedTypes } from '..';
 
 import { Home } from '@home';
 import { ForecastToday } from '@forecast_today';
-import { Forecast5Days } from '@forecast_5_days';
+import { Forecast3Days } from '@forecast_3_days';
 
 export enum Paths {
     HOME = '/',
     FORECAST_TODAY = '/forecast_today',
-    FORECAST_5_DAYS = '/forecast_5_days',
+    FORECAST_3_DAYS = '/forecast_3_days',
 }
 
 export const AppRoutes: Array<SharedTypes.IRoute> = [
@@ -20,7 +20,7 @@ export const AppRoutes: Array<SharedTypes.IRoute> = [
         path: Paths.FORECAST_TODAY,
     },
     {
-        element: <Forecast5Days />,
-        path: Paths.FORECAST_5_DAYS,
+        element: <Forecast3Days />,
+        path: Paths.FORECAST_3_DAYS,
     },
-]
+];

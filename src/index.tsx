@@ -1,18 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ThemeProvider } from 'styled-components';
-import { Theme } from '@shared';
-import { GlobalStyle } from './shared/components';
+import { Provider as ReduxProvider } from 'react-redux';
+import { PersistGate } from 'redux-persist/lib/integration/react';
+
+import App from './App';
+import { AppStore } from '@shared';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
     <React.StrictMode>
-        <ThemeProvider theme={Theme.lightTheme}>
-            <GlobalStyle />
-            <App />
-        </ThemeProvider>
+        <PersistGate
+            loading={null}
+            persistor={AppStore.persistor}>
+            <ReduxProvider store={AppStore.store}>
+                <App />
+            </ReduxProvider>
+        </PersistGate>
     </React.StrictMode>,
 );
 

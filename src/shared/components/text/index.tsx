@@ -11,7 +11,7 @@ export const Paragraph = styled.p<IParagraph>`
     text-align: ${({textAlign = 'center'}) => textAlign};
 `;
 
-export const Text: FC<IText> = memo(({type= SharedTypes.FontTypes.medium, color="black", textAlign, text} ) => {
+export const Text: FC<IText> = memo(({type= SharedTypes.FontTypes.medium, color, textAlign, text} ) => {
     return (
         <Paragraph type={type} color={color} textAlign={textAlign}>
             {text}
@@ -19,7 +19,7 @@ export const Text: FC<IText> = memo(({type= SharedTypes.FontTypes.medium, color=
     )
 })
 
-export const Title: FC<IText> = memo(({type= SharedTypes.FontTypes.h1, color, textAlign="right", text} ) => {
+export const Title: FC<IText> = memo(({type= SharedTypes.FontTypes.h1, color, textAlign="right", text,} ) => {
     return (
         <Paragraph as="h1" type={type} color={color} textAlign={textAlign}>
             {text}

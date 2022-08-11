@@ -1,6 +1,6 @@
 import { DefaultTheme } from "styled-components";
 
-export const lightTheme: DefaultTheme = {
+export const light: DefaultTheme = {
     spacing: {
         xs: "5px",
         s: "10px",
@@ -14,8 +14,10 @@ export const lightTheme: DefaultTheme = {
         thick: "5px",
     },
     proportions: {
+        heightXS: "15px",
         heightS: "25px",
         heightM: "35px",
+        widthXS: "15px",
         widthS: "50px",
         widthM: "90px",
         widthL: "180px",
@@ -48,7 +50,7 @@ export const lightTheme: DefaultTheme = {
         primaryFontColor: 'rgb(21, 19, 60)',
         secondaryFontColor: 'rgb(0, 0, 0)',
         decorativeColor: 'rgb(236, 153, 75)',
-        decorativeColorTransparent: 'rgba(236, 153, 75, 0.2)',
+        decorativeColorTransparent: 'rgba(236, 153, 75, 0.4)',
         primaryBackgroundColor: 'rgb(241, 238, 233)',
         secondaryBackgroundColor: 'rgba(115, 119, 123, 0.4)',
     }

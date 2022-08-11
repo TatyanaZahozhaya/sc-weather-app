@@ -1,40 +1,55 @@
-import { SharedComponents, Paths, Theme } from '@shared';
+import { useDispatch } from 'react-redux';
 
-export const CityListItem = () => {
-    const {
-        spacing: { s },
-        line: {thin},
-        palette: {decorativeColor},
-    } = Theme.useStyledTheme();
+import { SharedComponents, SharedTypes, Paths, AppStore } from '@shared';
+
+
+export const CityListItem = (item: SharedTypes.ICityData) => {
+    const { cityFetching, cityDelete, fetchCityDetailedForecast } =
+        AppStore.Actions;
+    const dispatch = useDispatch();
+
+    const onDelete = (e: any /* React.PointerEvent<HTMLButtonElement> */): void => {
+        dispatch(cityDelete(e.currentTarget.dataset.lineId));
+    };
+
+    const onAddDetailedForecast = (e: React.PointerEvent<HTMLButtonElement>): void => {
+        let city = e.currentTarget.dataset.lineName;
+        dispatch(cityFetching());
+        if (city) dispatch(fetchCityDetailedForecast({ city: city }));
+    };
+
+
+
     return (
-        <SharedComponents.GridContainer
-            as="li"
-            gridTemplateColumns="1fr 1fr 0.8fr 0.8fr 0.8fr"
-            padding={s}
-            borderBottom={`${thin} solid ${decorativeColor}`}>
-            <SharedComponents.Text text="Minsk, BY " />
+        <SharedComponents.HomepageTableLineContainer as="li">
+            <SharedComponents.Text text={`${item.name}, ${item.sys.country}`} />
             <SharedComponents.GridContainer gridTemplateColumns="1fr 0.5fr">
-                <SharedComponents.Text text="25 °C " />
+                <SharedComponents.Text text={`${item.main.temp} °C `} />
                 <SharedComponents.WeatherIcon
-                    icon="04d"
-                    descr="descr"
+                    icon={`${item.weather[0].icon}`}
+                    descr={`${item.weather[0].description}`}
                 />
             </SharedComponents.GridContainer>
             <SharedComponents.LinkButton
                 ariaLabel="Forecast for today"
                 text="...more"
                 to={Paths.FORECAST_TODAY}
+                dataLineName={`${item.name}`}
+                onClick={onAddDetailedForecast}
             />
             <SharedComponents.LinkButton
-                ariaLabel="Forecast for 5 days"
-                text="5 days"
-                to={Paths.FORECAST_5_DAYS}
+                ariaLabel="Forecast for 3 days"
+                text="3 days"
+                to={Paths.FORECAST_3_DAYS}
+                dataLineName={`${item.name}`}
+                onClick={onAddDetailedForecast}
             />
             <SharedComponents.Button
                 ariaLabel="Remove city from list"
                 text="X"
-                /* onClick={onDelete} */
+                onClick={onDelete}
+                dataLineID={`${item.name}`}
             />
-        </SharedComponents.GridContainer>
+        </SharedComponents.HomepageTableLineContainer>
     );
 };

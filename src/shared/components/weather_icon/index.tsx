@@ -7,6 +7,7 @@ interface IIMg {
     src?: string;
     alt: string;
 }
+
 export const StyledImg = styled.img<IIMg>`
     display: 'inline-block';
     height: ${({ theme }) => theme.proportions.heightM};
@@ -15,12 +16,13 @@ export const StyledImg = styled.img<IIMg>`
 interface IIcon {
     icon: string;
     descr: string;
-    
 }
 
-export const WeatherIcon: FC<IIcon> = memo(({icon, descr}) => {
-    return <StyledImg 
-    src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
-    alt={descr}/>;
+export const WeatherIcon: FC<IIcon> = memo(({ icon, descr }) => {
+    return (
+        <StyledImg
+            src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
+            alt={descr}
+        />
+    );
 });
-

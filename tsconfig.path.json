@@ -4,7 +4,7 @@
         "paths": {
             "@home": ["./src/home"],
             "@forecast_today": ["./src/forecast_today"],
-            "@forecast_5_days": ["./src/forecast_5_days"],
+            "@forecast_3_days": ["./src/forecast_3_days"],
             "@shared": ["./src/shared"]
         }
     }
