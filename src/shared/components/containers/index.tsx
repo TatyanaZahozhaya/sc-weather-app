@@ -1,17 +1,31 @@
 import styled, { keyframes } from 'styled-components';
 import { IGridContainer, IFlexContainer, IAppContainer, IContainer } from './types';
 
+const brightUp = keyframes`
+    from { opacity: 0; }
+`;
+
+const zoomIn = keyframes`
+    from { transform: scale3d(0,0,0); }
+`;
+
 export const AppContainer = styled.div<IAppContainer>`
     position: relative;
+    display: flex;
+    flex-direction: column;
     max-width: ${({ maxWidth = '700px' }) => maxWidth};
+    min-height: 100vh;
     font-family: ${({ fontFamily = 'Arial' }) => fontFamily};
     font-size: ${({ fontSize = '16px' }) => fontSize};
     margin: ${({ margin = '0 auto' }) => margin};
     padding: ${({ padding = '5px' }) => padding};
     background-color: ${({ backgroundColor = 'transparent' }) => backgroundColor};
 `;
-const brightUp = keyframes`
-    from { opacity: 0; }
+
+export const MainPartContainer = styled.div<IAppContainer>`
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
 `;
 
 export const Container = styled.div<IContainer>`
@@ -40,6 +54,7 @@ export const GridContainer = styled.div<IGridContainer>`
 
 export const FlexContainer = styled.div<IFlexContainer>`
     display: flex;
+    flex-direction: ${({ flexDirection = 'row' }) => flexDirection};
     width: ${({ width = '100%' }) => width};
     margin: ${({ margin = '0 auto' }) => margin};
     padding: ${({ padding = '0' }) => padding};
@@ -82,7 +97,6 @@ export const HomepageTableHeaderContainer = styled(TodayTableHeaderContainer)`
 
 export const HomepageTableLineContainer = styled(HomepageTableHeaderContainer)`
     border-bottom: ${({ theme }) => `${theme.line.thin} solid ${theme.palette.decorativeColor}`};
-
 `;
 
 export const HomepageTableErrorContainer = styled(HomepageTableHeaderContainer)`
@@ -97,10 +111,6 @@ export const ForecastHeaderContainer = styled(FlexContainer)`
 export const ForecastButtonContainer = styled(FlexContainer)`
     justify-content: right;
     gap: ${({ theme }) => theme.spacing.s};
-`;
-
-const zoomIn = keyframes`
-    from { transform: scale3d(0,0,0); }
 `;
 
 export const ForecastDataContainer = styled(FlexContainer)`

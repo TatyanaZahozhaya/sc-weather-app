@@ -48,7 +48,6 @@ export const CitiesList = () => {
     }, []);
 
 
-
     if (!cityToUpdateHomepage) {
         return <SharedComponents.Text text="Enter city name ..." />;
     }
@@ -60,7 +59,6 @@ export const CitiesList = () => {
     return (
         <SharedComponents.Container margin={`${l} 0`}>
             <SharedComponents.HomepageTableHeader />
-
             {loading ? (
                 <SharedComponents.HomepageTableErrorContainer as="li">
                     <SharedComponents.Text text="Loading city information ..." />

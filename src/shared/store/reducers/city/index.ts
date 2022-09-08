@@ -1,4 +1,6 @@
 import { ActionsType } from '../../actions';
+import { detailedForecastInitialState, cityToUpdateHomepageInitialState } from './initial_state_elements';
+
 import { SharedTypes } from '@shared';
 
 export interface IState {
@@ -14,8 +16,8 @@ const initialState: IState = {
     cityInformation: [],
     loading: false,
     error: false,
-    detailedForecast: {} as SharedTypes.ICityForecastOutput,
-    cityToUpdateInForecast: {} as SharedTypes.IForecastInput,
+    detailedForecast: detailedForecastInitialState,
+    cityToUpdateInForecast: cityToUpdateHomepageInitialState,
     cityToUpdateHomepage: [] ,
 };
 
@@ -25,6 +27,7 @@ export const cityReducer = (state: IState = initialState, action: ActionsType): 
             return {
                 ...state,
                 loading: true,
+                error: false,
             };
         case 'CITY_FETCHED':
             return {
@@ -34,14 +37,16 @@ export const cityReducer = (state: IState = initialState, action: ActionsType): 
                     action.payload,
                 ],
                 loading: false,
+                error: false,
             };
         case 'CITY_FETCHING_ERROR':
             return {
                 ...state,
                 error: true,
+                loading: false,
             };
 
-        case 'CITY_DELETE':
+        case 'DELETE_CITY':
             return {
                 ...state,
                 cityInformation: state.cityInformation.filter(
@@ -51,25 +56,29 @@ export const cityReducer = (state: IState = initialState, action: ActionsType): 
                     (item) => item !== action.payload,
                 ),
             };
-        case 'DETAILED_FORECAST_FETCHED':
+        case 'FETCH_DETAILED_FORECAST':
             return {
                 ...state,
                 detailedForecast: action.payload,
                 loading: false,
+                error: false,
             };
-        case 'CITY_TO_UPDATE_IN_FORECAST_ADDED':
+        case 'ADD_CITY_TO_UPDATE_IN_FORECAST':
             return {
                 ...state,
                 cityToUpdateInForecast: action.payload,
                 loading: false,
+                error: false,
             };
-        case 'CITY_TO_UPDATE_HOMEPAGE_ADDED':
+        case 'ADD_CITY_TO_UPDATE_CITY_LIST':
             return {
                 ...state,
                 cityToUpdateHomepage: [
                     ...state.cityToUpdateHomepage.filter((item) => item !== action.payload),
                     action.payload,
                 ],
+                loading: false,
+                error: false,
             };
         default:
             return state;

@@ -4,16 +4,16 @@ import { SharedComponents, SharedTypes, Paths, AppStore } from '@shared';
 
 export const CityListItem = (item: SharedTypes.ICityData) => {
     const dispatch = useDispatch();
+    const { deleteCity, addCityToUpdateInForecast } = AppStore.Actions;
 
-    const { cityDelete, cityToUpdateInForecastAdded } = AppStore.Actions;
-
-    const onDelete = (e: any /* React.PointerEvent<HTMLButtonElement> */): void => {
-        dispatch(cityDelete(e.currentTarget.dataset.lineId));
+    const onDelete = (e: React.PointerEvent<HTMLButtonElement>): void => {
+        let id = e.currentTarget.dataset.lineId;
+        if (id) dispatch(deleteCity(id));
     };
 
     const onAddDetailedForecast = (e: React.PointerEvent<HTMLButtonElement>): void => {
         let city = e.currentTarget.dataset.lineName;
-        if (city) dispatch(cityToUpdateInForecastAdded({ city }));
+        if (city) dispatch(addCityToUpdateInForecast({ city }));
     };
 
     return (
@@ -24,6 +24,7 @@ export const CityListItem = (item: SharedTypes.ICityData) => {
                 <SharedComponents.WeatherIcon
                     icon={`${item.weather[0].icon}`}
                     descr={`${item.weather[0].description}`}
+                    title={`${item.weather[0].description}`}
                 />
             </SharedComponents.GridContainer>
             <SharedComponents.LinkButton
@@ -36,7 +37,7 @@ export const CityListItem = (item: SharedTypes.ICityData) => {
             <SharedComponents.LinkButton
                 ariaLabel="Forecast for 3 days"
                 text="3 days"
-                to={Paths.FORECAST_3_DAYS}
+                to={Paths.FORECAST_SEVERAL_DAYS}
                 dataLineName={`${item.name}`}
                 onClick={onAddDetailedForecast}
             />

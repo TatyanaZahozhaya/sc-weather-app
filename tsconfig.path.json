@@ -4,7 +4,8 @@
         "paths": {
             "@home": ["./src/home"],
             "@forecast_today": ["./src/forecast_today"],
-            "@forecast_3_days": ["./src/forecast_3_days"],
+            "@forecast_several_days": ["./src/forecast_several_days"],
+            "@page_not_found": ["./src/page_not_found"],
             "@shared": ["./src/shared"]
         }
     }

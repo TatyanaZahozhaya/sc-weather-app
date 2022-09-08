@@ -116,19 +116,19 @@ export interface IForecastMain extends IWeatherMain {
     temp_kf: number;
 }
 
-export interface IForecastListItem{
+export interface IForecastListItem {
     clouds: IClouds;
     dt: number;
     dt_txt: string;
-    main: IForecastMain
+    main: IForecastMain;
     pop: number;
-    sys: {pod: string;}
+    sys: { pod: string };
     visibility: number;
     weather: Array<IWeather>;
     wind: IWind;
     rain: {
-        "3h": number;
-    }
+        '3h': number;
+    };
 }
 
 export interface ICityForecastOutput {
@@ -141,11 +141,11 @@ export interface ICityForecastOutput {
         sunrise: number;
         sunset: number;
         timezone: number;
-    }
+    };
     cnt: number;
     cod: string;
     message: number;
     list: Array<IForecastListItem>;
 }
 
-export interface IForecastOutput extends ICityForecastOutput{};
+export interface IForecastOutput extends ICityForecastOutput {}

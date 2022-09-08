@@ -12,40 +12,42 @@ export class _Client {
         this.token = token;
     }
 
-    fetchCityGeo = async ({
+    onFetch = async (url: string) => {
+        const response = await fetch(url);
+        return await response.json();
+    };
+
+    fetchCityGeo = ({
         city,
         limit = 1,
     }: SharedTypes.ICityGeoInput): Promise<SharedTypes.ICityGeoOutput> => {
-        const cityGeo = await fetch(
+        return this.onFetch(
             `${this.baseUrl}/geo/1.0/direct?q=${city}&limit=${limit}&appid=${this.token}`,
         );
-        return await cityGeo.json();
     };
 
     fetchCityData = async ({
         lat,
         lon,
     }: SharedTypes.ICityDataInput): Promise<SharedTypes.ICityDataOutput> => {
-        const cityData = await fetch(
+        return this.onFetch(
             `${this.baseUrl}/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${this.token}&units=metric`,
         );
-        return await cityData.json();
     };
 
     fetchCityForecast = async ({
         lat,
         lon,
     }: SharedTypes.ICityForecastInput): Promise<SharedTypes.ICityForecastOutput> => {
-        const cityData = await fetch(
+        return this.onFetch(
             `${this.baseUrl}/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=25&appid=${this.token}&units=metric`,
         );
-        return await cityData.json();
     };
 
     fetchCity = async ({ city }: SharedTypes.ICityInput): Promise<SharedTypes.ICityData> => {
         const coord = await this.fetchCityGeo({ city });
         if (!coord[0]) {
-            alert('city not found. check the spelling');
+            alert('City not found. Please, check spelling');
         }
         const { lat, lon } = coord[0];
         return await this.fetchCityData({ lat, lon });

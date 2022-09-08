@@ -13,7 +13,7 @@ export const ForecastTodayHeader = () => {
                 <SharedComponents.LinkButton
                     ariaLabel="Link to Forecast for 3 days"
                     text="3 days"
-                    to={Paths.FORECAST_3_DAYS}
+                    to={Paths.FORECAST_SEVERAL_DAYS}
                 />
             </SharedComponents.ForecastButtonContainer>
         </SharedComponents.ForecastHeaderContainer>

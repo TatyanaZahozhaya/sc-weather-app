@@ -36,8 +36,8 @@ function App() {
                 <SharedComponents.AppContainer>
                     <Router>
                         <SharedComponents.AppHeader />
-
                         <Routes>{AppRoutes.map(renderRoutes)}</Routes>
+                        <SharedComponents.AppFooter />
                     </Router>
                 </SharedComponents.AppContainer>
             </ThemeProvider>

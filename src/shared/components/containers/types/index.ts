@@ -1,6 +1,10 @@
 export interface IAppContainer {
+    display?: string;
+    flexDirection?: string;
+    flex?: string;
     position?: string;
     maxWidth?: string;
+    minHeight?: string;
     fontFamily?: string;
     fontSize?: string;
     margin?: string;
@@ -25,4 +29,5 @@ export interface IGridContainer extends IContainer {
 
 export interface IFlexContainer extends IContainer {
     justifyContent?: string;
+    flexDirection?: string;
 }

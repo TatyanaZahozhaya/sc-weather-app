@@ -6,23 +6,23 @@ import { ThunkAction } from 'redux-thunk';
 const CITY_FETCHING = 'CITY_FETCHING';
 const CITY_FETCHED = 'CITY_FETCHED';
 const CITY_FETCHING_ERROR = 'CITY_FETCHING_ERROR';
-const CITY_DELETE = 'CITY_DELETE';
-const DETAILED_FORECAST_FETCHED = 'DETAILED_FORECAST_FETCHED';
-const CITY_TO_UPDATE_IN_FORECAST_ADDED = 'CITY_TO_UPDATE_IN_FORECAST_ADDED';
-const CITY_TO_UPDATE_HOMEPAGE_ADDED = 'CITY_TO_UPDATE_HOMEPAGE_ADDED';
-const ACTIVE_FILTER_CHANGED = 'ACTIVE_FILTER_CHANGED';
-const THEME_TOGGLE = 'THEME_TOGGLE';
+const DELETE_CITY = 'DELETE_CITY';
+const FETCH_DETAILED_FORECAST = 'FETCH_DETAILED_FORECAST';
+const ADD_CITY_TO_UPDATE_IN_FORECAST = 'ADD_CITY_TO_UPDATE_IN_FORECAST';
+const ADD_CITY_TO_UPDATE_CITY_LIST = 'ADD_CITY_TO_UPDATE_CITY_LIST';
+const CHANGE_ACTIVE_FILTER = 'CHANGE_ACTIVE_FILTER';
+const TOGGLE_THEME = 'TOGGLE_THEME';
 
 export type ActionsType =
     | ICityFetchingAction
     | ICityFetchedAction
     | ICityFetchingErrorAction
-    | ICityDeleteAction
-    | IDetailedForecastFetchedAction
-    | ICityToUpdateInForecastAddedAction
-    | ICityToUpdateHomepageAddedAction
-    | IActiveFilterChangedAction
-    | IThemeToggleAction;
+    | IDeleteCityAction
+    | IFetchDetailedForecastAction
+    | IAddCityToUpdateInForecastAction
+    | IAddCityToUpdateCityListAction
+    | IChangeActiveFilterdAction
+    | IToggleThemeAction;
 
 interface ICityFetchingAction {
     type: typeof CITY_FETCHING;
@@ -53,72 +53,72 @@ export const cityFetchingError = (): ICityFetchingErrorAction => {
     };
 };
 
-interface ICityDeleteAction {
-    type: typeof CITY_DELETE;
+interface IDeleteCityAction {
+    type: typeof DELETE_CITY;
     payload: string;
 }
-export const cityDelete = (name: string): ICityDeleteAction => {
+export const deleteCity = (name: string): IDeleteCityAction => {
     return {
-        type: 'CITY_DELETE',
+        type: 'DELETE_CITY',
         payload: name,
     };
 };
 
-interface IDetailedForecastFetchedAction {
-    type: typeof DETAILED_FORECAST_FETCHED;
+interface IFetchDetailedForecastAction {
+    type: typeof FETCH_DETAILED_FORECAST;
     payload: SharedTypes.ICityForecastOutput;
 }
-export const detailedForecastFetched = (
+export const fetchDetailedForecast = (
     forecast: SharedTypes.ICityForecastOutput,
-): IDetailedForecastFetchedAction => {
+): IFetchDetailedForecastAction => {
     return {
-        type: 'DETAILED_FORECAST_FETCHED',
+        type: 'FETCH_DETAILED_FORECAST',
         payload: forecast,
     };
 };
 
-interface ICityToUpdateInForecastAddedAction {
-    type: typeof CITY_TO_UPDATE_IN_FORECAST_ADDED;
+interface IAddCityToUpdateInForecastAction {
+    type: typeof ADD_CITY_TO_UPDATE_IN_FORECAST;
     payload: SharedTypes.IForecastInput;
 }
-export const cityToUpdateInForecastAdded = (
+export const addCityToUpdateInForecast = (
     city: SharedTypes.IForecastInput,
-): ICityToUpdateInForecastAddedAction => {
+): IAddCityToUpdateInForecastAction => {
     return {
-        type: 'CITY_TO_UPDATE_IN_FORECAST_ADDED',
+        type: 'ADD_CITY_TO_UPDATE_IN_FORECAST',
         payload: city,
     };
 };
 
-interface ICityToUpdateHomepageAddedAction {
-    type: typeof CITY_TO_UPDATE_HOMEPAGE_ADDED;
+interface IAddCityToUpdateCityListAction {
+    type: typeof ADD_CITY_TO_UPDATE_CITY_LIST;
     payload: string;
 }
-export const cityToUpdateHomepageAdded = (cities: string): ICityToUpdateHomepageAddedAction => {
+export const addCityToUpdateCityList = (cities: string): IAddCityToUpdateCityListAction => {
     return {
-        type: 'CITY_TO_UPDATE_HOMEPAGE_ADDED',
+        type: 'ADD_CITY_TO_UPDATE_CITY_LIST',
         payload: cities,
     };
 };
 
-interface IActiveFilterChangedAction {
-    type: typeof ACTIVE_FILTER_CHANGED;
+interface IChangeActiveFilterdAction {
+    type: typeof CHANGE_ACTIVE_FILTER;
     payload: string;
 }
-export const activeFilterChanged = (filter: string): IActiveFilterChangedAction => {
+export const changeActiveFilter = (filter: string): IChangeActiveFilterdAction => {
     return {
-        type: 'ACTIVE_FILTER_CHANGED',
+        type: 'CHANGE_ACTIVE_FILTER',
         payload: filter,
     };
 };
 
-interface IThemeToggleAction {
-    type: typeof THEME_TOGGLE;
+interface IToggleThemeAction {
+    type: typeof TOGGLE_THEME;
     payload: string;
 }
-export const themeToggle = (activeTheme: string): IThemeToggleAction => {
+export const toggleTheme = (activeTheme: string): IToggleThemeAction => {
     return {
-        type: 'THEME_TOGGLE', 
+        type: 'TOGGLE_THEME', 
         payload: activeTheme,
     }
 }
@@ -129,10 +129,13 @@ export const getCityData =
     (dispatch) => {
         const { fetchCity } = Client;
         dispatch(cityFetching());
-        fetchCity({ city: city })
+        fetchCity({ city: city }) 
             .then((data: SharedTypes.ICityData) => {
+                if (!data.id) {
+                    dispatch(cityFetchingError())
+                }
                 dispatch(cityFetched(data));
-                dispatch(cityToUpdateHomepageAdded(data.name));
+                dispatch(addCityToUpdateCityList(data.name));
             })
             .catch(() => dispatch(cityFetchingError()));
     };
@@ -156,10 +159,10 @@ export const fetchCityDetailedForecast =
     (dispatch) => {
         const { fetchForecast } = Client;
         dispatch(cityFetching());
-        dispatch(cityToUpdateInForecastAdded({ city }));
+        dispatch(addCityToUpdateInForecast({ city }));
         fetchForecast({ city: city })
             .then((data: SharedTypes.ICityForecastOutput) => {
-                dispatch(detailedForecastFetched(data));
+                dispatch(fetchDetailedForecast(data));
             })
             .catch(() => dispatch(cityFetchingError()));
     };

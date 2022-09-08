@@ -10,7 +10,7 @@ const initialState: IFilterState = {
 
 export const filterReducer = (state: IFilterState = initialState, action: ActionsType): IFilterState => {
     switch (action.type) {
-        case 'ACTIVE_FILTER_CHANGED':
+        case 'CHANGE_ACTIVE_FILTER':
             return {
                 ...state,
                 activeFilter: action.payload,

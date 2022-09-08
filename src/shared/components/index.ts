@@ -1,8 +1,10 @@
 export { AppHeader } from './app_header';
+export { AppFooter } from './app_footer';
 export {
     FlexContainer,
     GridContainer,
     AppContainer,
+    MainPartContainer,
     Container,
     TodayTableHeaderContainer,
     TodayTableLineContainer,

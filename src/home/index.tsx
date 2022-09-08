@@ -2,12 +2,14 @@ import { CityAddForm } from './city_add_form';
 import { CitySearchForm } from './city_search_form';
 import { CitiesList } from './cities_list';
 
+import { SharedComponents } from '@shared';
+
 export const Home = () => {
     return (
-        <div>
+        <SharedComponents.MainPartContainer as='main'>
             <CityAddForm />
             <CitySearchForm />
             <CitiesList />
-        </div>
+        </SharedComponents.MainPartContainer>
     );
 };

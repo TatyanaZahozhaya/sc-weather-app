@@ -16,6 +16,7 @@ export const ForecastHeader = () => {
     }
 
     const currentData = cityInformation.find((item) => item.name === cityToUpdateInForecast.city);
+    
     if (loading || !cityInformation || !currentData) {
         return <SharedComponents.Text text="Loading ..." />;
     }
@@ -36,8 +37,9 @@ export const ForecastHeader = () => {
                 text={`NOW: ${temp} °C`}
             />
             <SharedComponents.WeatherIcon
-                icon={`${icon}`}
-                descr={`${description}`}
+                icon={icon}
+                descr={description}
+                title={description}
             />
         </SharedComponents.ForecastDataContainer>
     );

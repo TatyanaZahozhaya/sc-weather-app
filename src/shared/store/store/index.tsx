@@ -14,7 +14,7 @@ import { cityReducer, themeReducer, filterReducer } from '../reducers';
 const cityPersistConfig = {
     key: 'city',
     storage,
-    blacklist: ['cityInformation', 'loading', 'error'],
+    blacklist: ['loading', 'error'],
 };
 
 const themePersistConfig = {

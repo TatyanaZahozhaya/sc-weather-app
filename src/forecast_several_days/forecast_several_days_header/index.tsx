@@ -1,6 +1,6 @@
 import { SharedComponents, Paths } from '@shared';
 
-export const Forecast3DaysHeader = () => {
+export const ForecastSeveralDaysHeader = () => {
     return (
         <SharedComponents.ForecastHeaderContainer>
             <SharedComponents.ForecastHeader />

@@ -16,13 +16,15 @@ export const StyledImg = styled.img<IIMg>`
 interface IIcon {
     icon: string;
     descr: string;
+    title?: string;
 }
 
-export const WeatherIcon: FC<IIcon> = memo(({ icon, descr }) => {
+export const WeatherIcon: FC<IIcon> = memo(({ icon, descr, title }) => {
     return (
         <StyledImg
             src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
             alt={descr}
+            title={title}
         />
     );
 });

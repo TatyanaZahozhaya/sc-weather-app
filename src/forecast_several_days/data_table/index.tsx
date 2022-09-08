@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { SharedComponents, Paths, AppStore, getLocalTime } from '@shared';
+import { SharedComponents, SharedTypes, Paths, AppStore, getLocalTime } from '@shared';
 
 export const DataTable = () => {
     const { detailedForecast, cityToUpdateInForecast, loading } = useSelector(
@@ -40,18 +40,19 @@ export const DataTable = () => {
     const TableRows = [...detailedForecast.list];
     const timezone = detailedForecast.city.timezone;
 
-    const renderRows = (item: any, i: any) => {
+    const renderRows = (item: SharedTypes.IForecastListItem, i: number ) => {
         return (
             <SharedComponents.ForecastTableHLineContainer key={i}>
                 <SharedComponents.Text text={`${getLocalTime(item.dt, timezone)}`} />
                 <SharedComponents.WeatherIcon
                     icon={item.weather[0].icon}
                     descr={item.weather[0].description}
+                    title={item.weather[0].description}
                 />
-                <SharedComponents.Text text={item.main.temp} />
-                <SharedComponents.Text text={item.wind.speed} />
-                <SharedComponents.Text text={item.pop} />
-                <SharedComponents.Text text={item.visibility} />
+                <SharedComponents.Text text={`${item.main.temp}`} />
+                <SharedComponents.Text text={`${item.wind.speed}`} />
+                <SharedComponents.Text text={`${item.pop}`} />
+                <SharedComponents.Text text={`${item.visibility}`} />
             </SharedComponents.ForecastTableHLineContainer>
         );
     };
