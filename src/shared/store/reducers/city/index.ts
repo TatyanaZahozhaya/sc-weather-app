@@ -11,12 +11,12 @@ export interface IState {
 }
 
 const initialState: IState = {
-    cityInformation: [] as Array<SharedTypes.ICityData>,
+    cityInformation: [],
     loading: false,
     error: false,
     detailedForecast: {} as SharedTypes.ICityForecastOutput,
     cityToUpdateInForecast: {} as SharedTypes.IForecastInput,
-    cityToUpdateHomepage: [] as Array<string>,
+    cityToUpdateHomepage: [] ,
 };
 
 export const cityReducer = (state: IState = initialState, action: ActionsType): IState => {

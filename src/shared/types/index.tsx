@@ -29,10 +29,6 @@ export interface IApiClientParams {
     token?: string;
 }
 
-export interface IApiClientParamsAxios {
-    token?: string;
-}
-
 export interface ICityGeoInput {
     city: string;
     limit?: number;

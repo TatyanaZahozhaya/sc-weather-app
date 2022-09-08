@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Theme, SharedTypes, SharedComponents, AppStore } from '@shared';
-import { FlexContainer } from '../containers';
+import { Theme, SharedTypes, SharedComponents, AppStore, Paths } from '@shared';
 
 export const AppHeader = () => {
     const {
@@ -14,8 +13,8 @@ export const AppHeader = () => {
     const dispatch = useDispatch();
     const { themeToggle } = AppStore.Actions;
 
-    const onToggleTheme = (e: any): void => {
-        if (e.target.value === 'light') {
+    const onToggleTheme = (e: React.MouseEvent<HTMLButtonElement>): void => {
+        if (e.currentTarget.value === 'light') {
             dispatch(themeToggle('dark'));
         } else {
             dispatch(themeToggle('light'));
@@ -24,22 +23,22 @@ export const AppHeader = () => {
 
     return (
         <>
-            <FlexContainer
+            <SharedComponents.FlexContainer
                 as="header"
                 justifyContent="right"
                 margin={`${l} auto ${s}`}>
                 <SharedComponents.Title
                     text="GoodWeather"
+                    href={Paths.HOME}
                     type={SharedTypes.FontTypes.h1}
                     color={decorativeColor}
                 />
-            </FlexContainer>
+            </SharedComponents.FlexContainer>
             <SharedComponents.Toggler
                 id="toggler"
-                ariaLabel='theme toggler (light/dark)'
+                ariaLabel="theme toggler (light/dark)"
                 onClick={onToggleTheme}
                 value={activeTheme}
-                
             />
         </>
     );

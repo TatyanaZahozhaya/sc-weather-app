@@ -5,17 +5,21 @@ import { SharedComponents, AppStore } from '@shared';
 
 export const CityAddForm = () => {
     const [cityName, setCityName] = useState('');
+    const { cityInformation } = useSelector((state: AppStore.IAppState) => state.city);
 
     const dispatch = useDispatch();
-
-    const { cityInformation } = useSelector((state: AppStore.IAppState) => state.city);
     const { getCityData } = AppStore.Actions;
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+        if (e.target.value.length >= 0) {
+            setCityName(e.target.value);
+        }
+    };
 
     const onSubmitHandler = (e: React.FormEvent): void => {
         e.preventDefault();
         if (cityName.length === 0) {
             alert('enter city name ');
-            setCityName('');
         } else if (
             cityName.length > 0 &&
             !cityInformation.some((item) =>
@@ -27,12 +31,6 @@ export const CityAddForm = () => {
         } else {
             alert('the city is already in the list');
             setCityName('');
-        }
-    };
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-        if (e.target.value.length >= 0) {
-            setCityName(e.target.value);
         }
     };
 

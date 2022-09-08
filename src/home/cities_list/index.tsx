@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
 
@@ -40,21 +40,35 @@ export const CitiesList = () => {
     const { updateCityData } = AppStore.Actions;
 
     useEffect(() => {
-        console.log('updateCityData');
-        cityToUpdateHomepage.forEach((item) => {
-            dispatch(updateCityData({ city: item }));
-        });
+        if (cityToUpdateHomepage) {
+            cityToUpdateHomepage.forEach((item) => {
+                dispatch(updateCityData({ city: item }));
+            });
+        }
     }, []);
+
+
+
+    if (!cityToUpdateHomepage) {
+        return <SharedComponents.Text text="Enter city name ..." />;
+    }
+
+    if (!filteredCityInformation) {
+        return <SharedComponents.Text text="Loading ..." />;
+    }
 
     return (
         <SharedComponents.Container margin={`${l} 0`}>
             <SharedComponents.HomepageTableHeader />
-            
+
             {loading ? (
                 <SharedComponents.HomepageTableErrorContainer as="li">
                     <SharedComponents.Text text="Loading city information ..." />
                 </SharedComponents.HomepageTableErrorContainer>
-            ) : <ul>{filteredCityInformation.map(renderCityListItem)} </ul>}
+            ) : (
+                <ul>{filteredCityInformation.map(renderCityListItem)} </ul>
+            )}
         </SharedComponents.Container>
     );
 };
+

@@ -1,7 +1,7 @@
 import { SharedTypes } from '@shared';
 
 export class _Client {
-    baseUrl: string | undefined;
+    baseUrl?: string;
     token: string;
 
     constructor({ baseUrl, token }: SharedTypes.IApiClientParams) {

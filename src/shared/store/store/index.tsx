@@ -11,16 +11,9 @@ import storage from 'redux-persist/lib/storage';
 import { AppStore } from '@shared';
 import { cityReducer, themeReducer, filterReducer } from '../reducers';
 
-const rootPersistConfig = {
-    key: 'root',
-    storage,
-    whitelist: ['city', 'theme'],
-};
-
 const cityPersistConfig = {
     key: 'city',
     storage,
-
     blacklist: ['cityInformation', 'loading', 'error'],
 };
 
@@ -42,10 +35,8 @@ const rootReducer = combineReducers({
     theme: persistReducer(themePersistConfig, themeReducer),
 });
 
-const persistedReducer = persistReducer(rootPersistConfig, rootReducer);
-
 export const store = createStore(
-    persistedReducer,
+    rootReducer,
     compose(applyMiddleware(ReduxThunk), (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()),
 );
 export const persistor = persistStore(store);

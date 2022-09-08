@@ -1,4 +1,5 @@
 import {FC, memo} from 'react';
+
 import styled from 'styled-components';
 
 import { IText, IParagraph } from './types';
@@ -19,9 +20,9 @@ export const Text: FC<IText> = memo(({type= SharedTypes.FontTypes.medium, color,
     )
 })
 
-export const Title: FC<IText> = memo(({type= SharedTypes.FontTypes.h1, color, textAlign="right", text,} ) => {
+export const Title: FC<IText> = memo(({type= SharedTypes.FontTypes.h1, color, textAlign="right", text, href} ) => {
     return (
-        <Paragraph as="h1" type={type} color={color} textAlign={textAlign}>
+        <Paragraph as="a" type={type} color={color} textAlign={textAlign} href={href}>
             {text}
         </Paragraph>
     )

@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { Theme, SharedComponents, AppStore } from '@shared';
 
@@ -8,27 +7,21 @@ export const ForecastHeader = () => {
         palette: { primaryFontColor },
     } = Theme.useStyledTheme();
 
-    const { loading, cityInformation, detailedForecast, cityToUpdateInForecast } = useSelector(
+    const { cityInformation, cityToUpdateInForecast, loading } = useSelector(
         (state: AppStore.IAppState) => state.city,
     );
-    const { updateCityData } = AppStore.Actions;
-    const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(updateCityData({ city: cityToUpdateInForecast.city.toString() }));
-    }, []);
-
-    if (loading || !detailedForecast.city) {
-        return <SharedComponents.Text text="Loading..." />;
+    if (!cityToUpdateInForecast.city) {
+        return null;
     }
 
-    const currentData = cityInformation.find((item) => item.id === detailedForecast.city.id);
-
-    if (!currentData) {
-        return <SharedComponents.Text text="Loading forecast-header 1..." />;
+    const currentData = cityInformation.find((item) => item.name === cityToUpdateInForecast.city);
+    if (loading || !cityInformation || !currentData) {
+        return <SharedComponents.Text text="Loading ..." />;
     }
 
-    const { name, country } = detailedForecast.city;
+    const { name } = currentData;
+    const { country } = currentData.sys;
     const { temp } = currentData.main;
     const { icon, description } = currentData.weather[0];
 

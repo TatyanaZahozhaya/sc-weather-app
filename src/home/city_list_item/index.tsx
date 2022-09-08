@@ -2,11 +2,10 @@ import { useDispatch } from 'react-redux';
 
 import { SharedComponents, SharedTypes, Paths, AppStore } from '@shared';
 
-
 export const CityListItem = (item: SharedTypes.ICityData) => {
-    const { cityFetching, cityDelete, fetchCityDetailedForecast } =
-        AppStore.Actions;
     const dispatch = useDispatch();
+
+    const { cityDelete, cityToUpdateInForecastAdded } = AppStore.Actions;
 
     const onDelete = (e: any /* React.PointerEvent<HTMLButtonElement> */): void => {
         dispatch(cityDelete(e.currentTarget.dataset.lineId));
@@ -14,11 +13,8 @@ export const CityListItem = (item: SharedTypes.ICityData) => {
 
     const onAddDetailedForecast = (e: React.PointerEvent<HTMLButtonElement>): void => {
         let city = e.currentTarget.dataset.lineName;
-        dispatch(cityFetching());
-        if (city) dispatch(fetchCityDetailedForecast({ city: city }));
+        if (city) dispatch(cityToUpdateInForecastAdded({ city }));
     };
-
-
 
     return (
         <SharedComponents.HomepageTableLineContainer as="li">

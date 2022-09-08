@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { IGridContainer, IFlexContainer, IAppContainer, IContainer } from './types';
 
 export const AppContainer = styled.div<IAppContainer>`
@@ -10,6 +10,9 @@ export const AppContainer = styled.div<IAppContainer>`
     padding: ${({ padding = '5px' }) => padding};
     background-color: ${({ backgroundColor = 'transparent' }) => backgroundColor};
 `;
+const brightUp = keyframes`
+    from { opacity: 0; }
+`;
 
 export const Container = styled.div<IContainer>`
     display: block;
@@ -19,6 +22,8 @@ export const Container = styled.div<IContainer>`
     gap: ${({ gap = '0' }) => gap};
     align-items: ${({ alignItems = 'center' }) => alignItems};
     background-color: ${({ backgroundColor = 'transparent' }) => backgroundColor};
+    animation-name: ${brightUp};
+    animation-duration: 2s;
 `;
 
 export const GridContainer = styled.div<IGridContainer>`
@@ -71,10 +76,13 @@ export const ForecastTableHLineContainer = styled(ForecastTableHeaderContainer)`
 
 export const HomepageTableHeaderContainer = styled(TodayTableHeaderContainer)`
     grid-template-columns: 1fr 1fr 0.8fr 0.8fr 0.8fr;
+    animation-name: ${brightUp};
+    animation-duration: 1s;
 `;
 
 export const HomepageTableLineContainer = styled(HomepageTableHeaderContainer)`
     border-bottom: ${({ theme }) => `${theme.line.thin} solid ${theme.palette.decorativeColor}`};
+
 `;
 
 export const HomepageTableErrorContainer = styled(HomepageTableHeaderContainer)`
@@ -91,9 +99,15 @@ export const ForecastButtonContainer = styled(FlexContainer)`
     gap: ${({ theme }) => theme.spacing.s};
 `;
 
+const zoomIn = keyframes`
+    from { transform: scale3d(0,0,0); }
+`;
+
 export const ForecastDataContainer = styled(FlexContainer)`
     align-items: center;
     gap: ${({ theme }) => theme.spacing.s};
     padding: ${({ theme }) => `0 0 0 ${theme.spacing.s}`};
     background-color: ${({ theme }) => theme.palette.decorativeColorTransparent};
+    animation-name: ${zoomIn};
+    animation-duration: 1s;
 `;

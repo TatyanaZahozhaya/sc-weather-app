@@ -15,7 +15,6 @@ export const themeReducer =(state: IThemeState = initialState, action: ActionsTy
 
             return {
                 activeTheme: action.payload,
-                
             };
         default: 
         return state

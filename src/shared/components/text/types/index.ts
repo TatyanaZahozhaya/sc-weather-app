@@ -11,4 +11,5 @@ export interface IText {
     color?: string;
     textAlign?: string;
     text: string;
+    href?: string;
 }
