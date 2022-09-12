@@ -1,46 +1,31 @@
-# Getting Started with Create React App
+# SC-WEATHER-APP
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+GithubPages: https://tatyanazahozhaya.github.io/sc-weather-app/
 
-## Available Scripts
+## Summary
 
-In the project directory, you can run:
+Приложение для получения текущих данных о погоде в выбранном городе, а также прогноза погоды на 3 суток.
 
-### `npm start`
+Пользователь может формировать список городов, фильтровать города, удалять города из списка.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+При перезагрузке страницы данные автоматически обновляются.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+*только desktop версия
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+An application for obtaining current weather data in the selected city, as well as a weather forecast for 3 days.
 
-### `npm run build`
+User can create a list of cities, filter cities, remove cities from the list.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The data is automatically updated when the page is reloaded.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+*desktop version only
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technologies
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+React                                                                   
+Redux
+Redux Persist                                       
+Styled Components
+TypeScript
+Fetch API
