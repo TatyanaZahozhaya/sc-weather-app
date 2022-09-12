@@ -1,4 +1,5 @@
 import { FC, memo } from 'react';
+
 import styled from 'styled-components';
 
 interface IIMg {
@@ -22,9 +23,10 @@ interface IIcon {
 export const WeatherIcon: FC<IIcon> = memo(({ icon, descr, title }) => {
     return (
         <StyledImg
-            src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
+            src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
             alt={descr}
             title={title}
         />
     );
 });
+

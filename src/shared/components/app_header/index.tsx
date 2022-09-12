@@ -1,10 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Theme, SharedTypes, SharedComponents, AppStore, Paths } from '@shared';
+import { Theme, SharedComponents, AppStore, Paths } from '@shared';
 
 export const AppHeader = () => {
     const {
-        palette: { decorativeColor },
         spacing: { s, l },
     } = Theme.useStyledTheme();
 
@@ -29,9 +28,7 @@ export const AppHeader = () => {
             flexDirection="column">
             <SharedComponents.Title
                 text="GoodWeather"
-                href={Paths.HOME}
-                type={SharedTypes.FontTypes.h1}
-                color={decorativeColor}
+                to={Paths.HOME}
             />
             <SharedComponents.Toggler
                 id="toggler"

@@ -30,7 +30,6 @@ function App() {
     }, [activeTheme]);
 
     return (
-        <>
             <ThemeProvider theme={theme}>
                 <SharedComponents.GlobalStyle />
                 <SharedComponents.AppContainer>
@@ -41,7 +40,6 @@ function App() {
                     </Router>
                 </SharedComponents.AppContainer>
             </ThemeProvider>
-        </>
     );
 }
 

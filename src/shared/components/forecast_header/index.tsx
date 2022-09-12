@@ -21,25 +21,22 @@ export const ForecastHeader = () => {
         return <SharedComponents.Text text="Loading ..." />;
     }
 
-    const { name } = currentData;
-    const { country } = currentData.sys;
-    const { temp } = currentData.main;
-    const { icon, description } = currentData.weather[0];
+    const { name, sys, main, weather } = currentData;
 
     return (
         <SharedComponents.ForecastDataContainer>
             <SharedComponents.Text
                 color={primaryFontColor}
-                text={`${name}, ${country}`}
+                text={`${name}, ${sys.country}`}
             />
             <SharedComponents.Text
                 color={primaryFontColor}
-                text={`NOW: ${temp} °C`}
+                text={`NOW: ${main.temp} °C`}
             />
             <SharedComponents.WeatherIcon
-                icon={icon}
-                descr={description}
-                title={description}
+                icon={weather[0].icon}
+                descr={weather[0].description}
+                title={weather[0].description}
             />
         </SharedComponents.ForecastDataContainer>
     );

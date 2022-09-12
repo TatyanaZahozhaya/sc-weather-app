@@ -16,36 +16,38 @@ export const CityListItem = (item: SharedTypes.ICityData) => {
         if (city) dispatch(addCityToUpdateInForecast({ city }));
     };
 
+    const {name, sys, main, weather } = item;
+
     return (
         <SharedComponents.HomepageTableLineContainer as="li">
-            <SharedComponents.Text text={`${item.name}, ${item.sys.country}`} />
+            <SharedComponents.Text text={`${name}, ${sys.country}`} />
             <SharedComponents.GridContainer gridTemplateColumns="1fr 0.5fr">
-                <SharedComponents.Text text={`${item.main.temp} °C `} />
+                <SharedComponents.Text text={`${main.temp} °C `} />
                 <SharedComponents.WeatherIcon
-                    icon={`${item.weather[0].icon}`}
-                    descr={`${item.weather[0].description}`}
-                    title={`${item.weather[0].description}`}
+                    icon={`${weather[0].icon}`}
+                    descr={`${weather[0].description}`}
+                    title={`${weather[0].description}`}
                 />
             </SharedComponents.GridContainer>
             <SharedComponents.LinkButton
                 ariaLabel="Forecast for today"
                 text="...more"
                 to={Paths.FORECAST_TODAY}
-                dataLineName={`${item.name}`}
+                dataLineName={`${name}`}
                 onClick={onAddDetailedForecast}
             />
             <SharedComponents.LinkButton
                 ariaLabel="Forecast for 3 days"
                 text="3 days"
                 to={Paths.FORECAST_SEVERAL_DAYS}
-                dataLineName={`${item.name}`}
+                dataLineName={`${name}`}
                 onClick={onAddDetailedForecast}
             />
             <SharedComponents.Button
                 ariaLabel="Remove city from list"
                 text="X"
                 onClick={onDelete}
-                dataLineID={`${item.name}`}
+                dataLineID={`${name}`}
             />
         </SharedComponents.HomepageTableLineContainer>
     );

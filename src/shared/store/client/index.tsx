@@ -63,6 +63,6 @@ export class _Client {
 }
 
 export const Client = new _Client({
-    baseUrl: 'http://api.openweathermap.org',
+    baseUrl: 'https://api.openweathermap.org',
     token: process.env.REACT_APP_API_KEY,
 });

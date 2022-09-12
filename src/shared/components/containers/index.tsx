@@ -72,7 +72,7 @@ export const TodayTableHeaderContainer = styled(GridContainer)`
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     padding: ${({ theme }) => theme.spacing.m};
-    border-bottom: ${({ theme }) => `${theme.line.middle} solid ${theme.palette.decorativeColor}`};
+    border-bottom: ${({ theme }) => `${theme.line.middle} solid ${theme.palette.decorativeColor}`}; 
     background-color: ${({ theme }) => theme.palette.secondaryBackgroundColor};
 `;
 

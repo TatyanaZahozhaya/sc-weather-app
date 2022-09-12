@@ -41,21 +41,23 @@ export const DataTable = () => {
     const timezone = detailedForecast.city.timezone;
 
     const renderRows = (item: SharedTypes.IForecastListItem, i: number ) => {
+        const {dt, weather, main, wind, pop, visibility} = item;
         return (
             <SharedComponents.ForecastTableHLineContainer key={i}>
-                <SharedComponents.Text text={`${getLocalTime(item.dt, timezone)}`} />
+                <SharedComponents.Text text={`${getLocalTime(dt, timezone)}`} />
                 <SharedComponents.WeatherIcon
-                    icon={item.weather[0].icon}
-                    descr={item.weather[0].description}
-                    title={item.weather[0].description}
+                    icon={weather[0].icon}
+                    descr={weather[0].description}
+                    title={weather[0].description}
                 />
-                <SharedComponents.Text text={`${item.main.temp}`} />
-                <SharedComponents.Text text={`${item.wind.speed}`} />
-                <SharedComponents.Text text={`${item.pop}`} />
-                <SharedComponents.Text text={`${item.visibility}`} />
+                <SharedComponents.Text text={`${main.temp}`} />
+                <SharedComponents.Text text={`${wind.speed}`} />
+                <SharedComponents.Text text={`${pop}`} />
+                <SharedComponents.Text text={`${visibility}`} />
             </SharedComponents.ForecastTableHLineContainer>
         );
     };
+    
     return (
         <>
             <SharedComponents.ForecastButtonContainer margin="0 0 10px 0">
