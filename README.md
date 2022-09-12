@@ -11,7 +11,7 @@ GithubPages: https://tatyanazahozhaya.github.io/sc-weather-app/
 При перезагрузке страницы данные автоматически обновляются.
 
 *только desktop версия
-
+#
 
 An application for obtaining current weather data in the selected city, as well as a weather forecast for 3 days.
 
@@ -23,9 +23,9 @@ The data is automatically updated when the page is reloaded.
 
 ## Technologies
 
-React                                                                   
-Redux
-Redux Persist                                       
-Styled Components
-TypeScript
-Fetch API
+##### React,                                                                   
+##### Redux,
+##### Redux Persist,                                       
+##### Styled Components,
+##### TypeScript,
+##### Fetch API,
