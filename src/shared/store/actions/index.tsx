@@ -1,7 +1,7 @@
-import { SharedTypes, Client, AppStore } from '@shared';
-
 import { AnyAction } from 'redux';
 import { ThunkAction } from 'redux-thunk';
+
+import { SharedTypes, Client, AppStore } from '@shared';
 
 const CITY_FETCHING = 'CITY_FETCHING';
 const CITY_FETCHED = 'CITY_FETCHED';

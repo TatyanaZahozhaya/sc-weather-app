@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+
 import { IGridContainer, IFlexContainer, IAppContainer, IContainer } from './types';
 
 const brightUp = keyframes`

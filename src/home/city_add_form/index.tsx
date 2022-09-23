@@ -27,11 +27,10 @@ export const CityAddForm = () => {
             )
         ) {
             dispatch(getCityData({ city: cityName }));
-            setCityName('');
         } else {
             alert('the city is already in the list');
-            setCityName('');
         }
+        setCityName('');
     };
 
     return (

@@ -1,7 +1,7 @@
+import { SharedTypes } from '@shared';
+
 import { ActionsType } from '../../actions';
 import { detailedForecastInitialState, cityToUpdateHomepageInitialState } from './initial_state_elements';
-
-import { SharedTypes } from '@shared';
 
 export interface IState {
     cityInformation: Array<SharedTypes.ICityData>;

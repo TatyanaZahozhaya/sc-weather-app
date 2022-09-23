@@ -1,10 +1,10 @@
 import { FC, memo } from 'react';
 import { Link } from 'react-router-dom';
-
 import styled from 'styled-components';
 
-import { IText, IParagraph, ITitle } from './types';
 import { SharedTypes } from '@shared';
+
+import { IText, IParagraph, ITitle } from './types';
 
 export const Paragraph = styled.p<IParagraph>`
     font-family: ${({ type, theme }) => theme.typography[type].fontFamily};

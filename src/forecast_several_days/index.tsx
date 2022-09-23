@@ -1,7 +1,7 @@
+import { SharedComponents } from '@shared';
+
 import { ForecastSeveralDaysHeader } from './forecast_several_days_header';
 import { DataTable } from './data_table';
-
-import { SharedComponents } from '@shared';
 
 export const ForecastSeveralDays = () => {
     return (

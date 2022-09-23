@@ -1,5 +1,4 @@
-import { SharedTypes } from '..';
-
+import { SharedTypes } from '@shared';
 import { Home } from '@home';
 import { ForecastToday } from '@forecast_today';
 import { ForecastSeveralDays } from '@forecast_several_days';
