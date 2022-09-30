@@ -1,7 +1,5 @@
 # SC-WEATHER-APP
 
-GithubPages: https://tatyanazahozhaya.github.io/sc-weather-app/
-
 ## Summary
 
 Приложение для получения текущих данных о погоде в выбранном городе, а также прогноза погоды на 3 суток.
@@ -24,8 +22,7 @@ The data is automatically updated when the page is reloaded.
 ## Technologies
 
 ##### React,                                                                   
-##### Redux,
-##### Redux Persist,                                       
+##### Redux, Redux Thunk, Redux Persist,  
+##### TypeScript,                                   
 ##### Styled Components,
-##### TypeScript,
 ##### Fetch API,
